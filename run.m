@@ -9,8 +9,8 @@ addpath('gpml-master', 'moead', 'nsga2', 'addGP');
 
 problems       = {'zdt1','zdt2','zdt3','zdt4'};
 problem_length = length(problems);
-Dimension      = 50;
-Popsize        = 200;
+Dimension      = 10;
+Popsize        = 50;
 Iteration      = 50;
 totalrun       = 20;
 

@@ -37,7 +37,7 @@ function [popp, popo] = nsga2(problem, model_hyp, db_pop, db_objs)
     pop = assignV(popp, popo, pop);
     
     [pop, F] = nonDominatedSort(pop);  % Non-Dominated Sorting
-    pop = crowdingdistance(pop, F);    % Calculate Crowding Distance
+    pop = crowdingdistance(pop, F, nObj);    % Calculate Crowding Distance
     [pop, ~] = sortpop(pop);           % Sort Population
     
     %% NSGA-II Main Loop
@@ -110,12 +110,12 @@ function [popp, popo] = nsga2(problem, model_hyp, db_pop, db_objs)
         % Merge
         pop = [pop; popnew; popc; popm; popr];
         [pop, F] = nonDominatedSort(pop);  % Non-Dominated Sorting
-        pop = crowdingdistance(pop, F);    % Calculate Crowding Distance
+        pop = crowdingdistance(pop, F, nObj);    % Calculate Crowding Distance
         pop = sortpop(pop);                % Sort Population
         pop = pop(1:nPop);                 % Truncate
 
         [pop, F] = nonDominatedSort(pop);  % Non-Dominated Sorting
-        pop = crowdingdistance(pop, F);    % Calculate Crowding Distance`
+        pop = crowdingdistance(pop, F, nObj);    % Calculate Crowding Distance`
         pop = sortpop(pop);                % Sort Population
         F1 = pop(F{1});                    % Store F1
         

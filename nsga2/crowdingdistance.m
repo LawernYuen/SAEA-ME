@@ -1,10 +1,8 @@
-function pop = crowdingdistance(pop, F)
+function pop = crowdingdistance(pop, F, nObj)
 
     nF = numel(F);
     for i = 1 : nF
-        costs = [pop(F{i}).Cost];
-        costs = [costs(1:2:end); costs(2:2:end)].';
-        nObj = size(costs, 2);
+        [~, costs]=getV(pop(F{i}), size(pop(1).Position,2), nObj);
         n = numel(F{i});
         d = zeros(n, nObj);
         for j = 1 : nObj
